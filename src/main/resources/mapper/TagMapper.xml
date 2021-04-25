@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo1.dao.TagDao">
+    <resultMap id="Tag" type="com.example.demo1.entity.Tag">
+        <id column="tag_id" jdbcType="INTEGER" property="tagId"></id>
+        <result column="tag_name" jdbcType="VARCHAR" property="tagName"/>
+        <result column="tag_count" jdbcType="INTEGER" property="tagCount"/>
+    </resultMap>
+
+    <sql id="Base_Colunm_List">
+        tag_id, tag_name, tag_count
+    </sql>
+
+    <select id="listTags" resultMap="Tag">
+        select
+        <include refid="Base_Colunm_List"/>
+        from tag
+    </select>
+
+    <select id="getTagById" parameterType="int" resultMap="Tag">
+        select
+        <include refid="Base_Colunm_List"/>
+        from tag
+        where
+        tag_id = #{id}
+    </select>
+</mapper>
