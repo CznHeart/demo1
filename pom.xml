@@ -111,11 +111,18 @@
                 <!--                打jar包插件-->
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
 
                 <configuration>
                     <includeSystemScope>true</includeSystemScope>
                     <mainClass>com.example.demo1.Demo1Application</mainClass>
+
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>
